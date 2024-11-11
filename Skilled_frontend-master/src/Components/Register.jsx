@@ -64,6 +64,8 @@ const RegisterForm = () => {
 
     if (!error) {
       if (!isVerified) {
+        localStorage.setItem("loginSuccess", "You have successfully logged in!");
+
         navigate("/verify");
       }
       // navigate("/");

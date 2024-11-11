@@ -12,7 +12,7 @@ const generateToken = (data, res) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    secure: true,
+    secure: false,
     maxAge: 5 * 24 * 60 * 60 * 1000, // 5 days
     sameSite: "strict",
     secure: process.env.NODE_ENV === "development",

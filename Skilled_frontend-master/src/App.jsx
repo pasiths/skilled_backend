@@ -17,8 +17,20 @@ import RecruiterLogin from "./Components/RecruiterLogin";
 
 import { Router, Routes, Route } from "react-router-dom";
 import NotFound from "./Pages/NotFound";
+import { useEffect, useState } from "react";
+import Jwt from "./utils/Jwt";
 
 function App() {
+  const [loginSuccess, setLoginSuccess] = useState(null);
+
+  useEffect(() => {
+    // Get loginSuccess message from localStorage on component mount
+    const successMessage = localStorage.getItem("loginSuccess");
+    if (successMessage) {
+      setLoginSuccess(successMessage);
+    }
+  }, []);
+
   return (
     // <Router>
     //   <Navbar1 />
@@ -39,9 +51,10 @@ function App() {
     //   </Routes>
     //   <Footer />
     // </Router>
+
     <>
-      <Navbar1 />
-      <NavbarLogged />
+      <Jwt />
+      {loginSuccess ? <NavbarLogged /> : <Navbar1 />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<JobList />} />

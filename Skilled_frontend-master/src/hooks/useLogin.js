@@ -13,7 +13,6 @@ export const LoginUser = () => {
     setError("");
 
     try {
-      console.log(captchaToken);
 
       const response = await fetch("/api/auth/loginUser", {
         method: "POST",
