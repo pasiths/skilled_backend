@@ -32,6 +32,8 @@ const Login = () => {
     }
     await login(formData.email, formData.password, captchaToken);
     if (!error) {
+      localStorage.setItem("loginSuccess", "You have successfully logged in!");
+
       navigate("/"); // Redirect to the homepage
     }
   };
